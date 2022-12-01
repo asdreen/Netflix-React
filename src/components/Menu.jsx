@@ -39,7 +39,7 @@ class Menu extends Component {
       <TouchableHighlight
         key={key}
         style={
-          element == itemSelectedValue
+          element === itemSelectedValue
             ? [styles.items, styles.itemSelected]
             : styles.noSelectedItems
         }

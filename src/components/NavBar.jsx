@@ -1,7 +1,12 @@
 import { Nav, Navbar } from "react-bootstrap";
+import * as Icon from "react-bootstrap-icons";
 import { Container } from "react-bootstrap";
+import { Link, useLocation } from "react-router-dom";
 
 const NetflixNav = (props) => {
+  const location = useLocation();
+  console.log("LOCATION PATHNAME", location.pathname);
+
   return (
     <Navbar expand="lg" bg="dark" className="color-nav" variant="dark">
       <Container fluid>
@@ -17,28 +22,34 @@ const NetflixNav = (props) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link>Home</Nav.Link>
-            <Nav.Link>TV Shows</Nav.Link>
-
-            <Nav.Link>Home</Nav.Link>
+            <Link to="/Home" className="navbar-links">
+              <div
+                className={
+                  location.pathname === "/Home" ? "nav-link active" : "nav-link"
+                }
+              >
+                Home
+              </div>
+            </Link>
+            <Link to="/TvShows" className="navbar-links">
+              <div
+                className={
+                  location.pathname === "/TvShows"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                TV Shows
+              </div>
+            </Link>
 
             <Nav.Link>Recently Added</Nav.Link>
             <Nav.Link>My List</Nav.Link>
           </Nav>
 
           <Nav className="ml-auto">
-            <Nav.Link>
-              {" "}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-search icon"
-                viewBox="0 0 16 16"
-              >
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-              </svg>
+            <Nav.Link href="#deets">
+              <Icon.Search color="white" />
             </Nav.Link>
             <Nav.Link>KIDS</Nav.Link>
             <Nav.Link>

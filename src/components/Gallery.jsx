@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Card, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import NetflixAlert from "./NetflixAlert";
 
 class Gallery extends Component {
@@ -33,12 +34,24 @@ class Gallery extends Component {
           {this.state.isError && <NetflixAlert />}
           {this.state.movies.map((element, i) => (
             <Col key={i}>
-              <Card>
-                <Card.Img
-                  className="movie-cover"
-                  variant="top"
-                  src={element.Poster}
-                />
+              <Card
+                style={{
+                  width: "100px",
+                  height: "150px",
+                }}
+              >
+                <Link to={`/details/${element.imdbID}`}>
+                  <Card.Img
+                    className="movie-cover"
+                    variant="top"
+                    src={element.Poster}
+                    style={{
+                      width: "100px",
+                      height: "150px",
+                      objectFit: "cover",
+                    }}
+                  />
+                </Link>
               </Card>
             </Col>
           ))}
